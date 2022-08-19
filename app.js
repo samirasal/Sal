@@ -60,20 +60,19 @@ function tellTemperature(city) {
 
 function search(event) {
   event.preventDefault();
-  let apiKey = "af945b912edb9d07f1b541e8b01d770f";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid=${apiKey}&units=metric`;
-  let city = document.querySelector("#search-text").value;
-  
+  // let apiKey = "af945b912edb9d07f1b541e8b01d770f";
+  // let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid=${apiKey}&units=metric`;
+  // let city = document.querySelector("#search-text").value;
+}
 
-//  // let searchText = document.querySelector("#search-text");
-//   let cityName = document.querySelector("#city");
-//   if (searchText.value) {
-//     cityName.innerHTML = searchText.value;
-//   } else {
-//     cityName.innerHTML = null;
-//     alert("Please enter a city");
-//   }
-// }
+let searchText = document.querySelector("#search-text");
+let cityName = document.querySelector("#city");
+if (searchText.value) {
+  cityName.innerHTML = `📍${searchText.value}`;
+} else {
+  cityName.innerHTML = null;
+  alert("Please enter a city");
+}
 
 let searchForm = document.querySelector("#appearance");
 searchForm.addEventListener("submit", search);
@@ -95,7 +94,7 @@ function showTemperature(response) {
 
 function tellPosition(position) {
   let gpsButton = document.querySelector("#button-selector");
-  gpsButton.innerHTML = `Latitude:${position.coord.lat},Longitude:${position.coord.lon}`;
+  alert(`Latitude:${-122.08},Longitude:${37.39}`);
 
   gpsButton.addEventListener("click", search);
 
