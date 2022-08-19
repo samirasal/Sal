@@ -93,7 +93,7 @@ function showTemperature(response) {
   console.log(response.main.base.temp);
   let theTemperature = Math.round(response.base.main.temp);
 }
-axios.get(apiUrl).then(showTemperature);
+
 function tellPosition(position) {
   let gpsButton = document.querySelector("#button-selector");
   gpsButton.innerHTML = `Latitude:${position.coord.lat},Longitude:${position.coord.lon}`;
@@ -101,7 +101,10 @@ function tellPosition(position) {
   gpsButton.addEventListener("click", search);
 
   let apiKey = "af945b912edb9d07f1b541e8b01d770f";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+  let latitude = -122.08;
+  let longitude = 37.39;
+  axios.get(apiUrl).then(showTemperature);
 }
 
 navigator.geolocation.getCurrentPosition(tellPosition);
